@@ -26,22 +26,27 @@ function handleFileSelect(event) {
 
 function startAnalysis() {
     if (fileData) {
+        const stopLossTicks = parseFloat(document.getElementById('stopLoss').value);
+        const takeProfitTicks = parseFloat(document.getElementById('takeProfit').value);
+        const entryHour = parseInt(document.getElementById('entryHour').value);
+        const entryMinute = parseInt(document.getElementById('entryMinute').value);
+
         console.log('Starting analysis with data:', fileData);
-        analyzeData(fileData);
+        analyzeData(fileData, stopLossTicks, takeProfitTicks, entryHour, entryMinute);
     } else {
         console.log('No file data available for analysis');
     }
 }
 
-function analyzeData(data) {
-    const stopLoss = 0.0071;
-    const takeProfit = 0.0210;
+function analyzeData(data, stopLossTicks, takeProfitTicks, entryHour, entryMinute) {
+    const stopLoss = stopLossTicks / 10000;
+    const takeProfit = takeProfitTicks / 10000;
     const lotSize = 1;
     const results = [];
 
     data.forEach((row, index) => {
         const date = new Date(row.timestamp);
-        if (date.getHours() === 9 && date.getMinutes() === 0) {
+        if (date.getHours() === entryHour && date.getMinutes() === entryMinute) {
             const entryPrice = row.open;
             let exitPrice = entryPrice;
             let result = 'Day Close';
