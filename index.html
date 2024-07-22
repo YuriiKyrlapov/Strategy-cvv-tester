@@ -4,28 +4,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trading Strategy Analysis</title>
+    <!-- Подключение библиотеки PapaParse через CDN -->
     <script src="https://cdn.jsdelivr.net/npm/papaparse@5.3.0/papaparse.min.js"></script>
 </head>
 <body>
     <h1>Trading Strategy Analysis</h1>
+    <!-- Поле для загрузки CSV файла -->
     <input type="file" id="fileInput">
+    <!-- Ввод параметров стоп-лосса -->
     <div>
         <label for="stopLoss">Stop Loss (ticks):</label>
         <input type="number" id="stopLoss" value="71">
     </div>
+    <!-- Ввод параметров тейк-профита -->
     <div>
         <label for="takeProfit">Take Profit (ticks):</label>
         <input type="number" id="takeProfit" value="210">
     </div>
+    <!-- Ввод времени входа (час) -->
     <div>
         <label for="entryHour">Entry Hour:</label>
         <input type="number" id="entryHour" value="9">
     </div>
+    <!-- Ввод времени входа (минута) -->
     <div>
         <label for="entryMinute">Entry Minute:</label>
         <input type="number" id="entryMinute" value="0">
     </div>
+    <!-- Кнопка для запуска анализа -->
     <button id="startButton" disabled>Start</button>
+    <!-- Таблица для отображения результатов анализа -->
     <table id="resultsTable" border="1">
         <thead>
             <tr>
@@ -40,6 +48,7 @@
         <tbody>
         </tbody>
     </table>
+    <!-- Подключение JavaScript файла для выполнения анализа -->
     <script src="analysis.js"></script>
 </body>
 </html>
